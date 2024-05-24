@@ -1,12 +1,12 @@
 name: phy
 dependencies:
-  - python=3.5
+  - python=3.11
   - numpy
   - matplotlib
   - scipy
   - h5py
   - cython
-  - pyqt=4
+  - pyside6
   - pip:
     - klusta
     - klustakwik2

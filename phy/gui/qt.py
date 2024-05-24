@@ -30,28 +30,34 @@ logger = logging.getLogger(__name__)
 # https://riverbankcomputing.com/pipermail/pyqt/2014-January/033681.html
 from OpenGL import GL  # noqa
 
-from PyQt5.QtCore import (Qt, QByteArray, QMetaObject, QObject,  # noqa
-                          QVariant, QEventLoop, QTimer, QPoint, QTimer,
+from PySide6.QtCore import (Qt, QByteArray, QMetaObject, QObject,  # noqa QVariant,
+                          QEventLoop, QTimer, QPoint, QTimer,
                           QThreadPool, QRunnable,
-                          pyqtSignal, pyqtSlot, QSize, QUrl,
+                          Signal, Slot, 
+                          QSize, QUrl,
                           QEvent, QCoreApplication,
-                          qInstallMessageHandler,
+                          # qInstallMessageHandler,
                           )
-from PyQt5.QtGui import (  # noqa
+from PySide6.QtWebEngineCore import QWebEnginePage
+from PySide6.QtGui import (  # noqa
     QKeySequence, QIcon, QColor, QMouseEvent, QGuiApplication,
-    QFontDatabase, QWindow, QOpenGLWindow)
-from PyQt5.QtWebEngineWidgets import (QWebEngineView,  # noqa
-                                      QWebEnginePage,
+    QFontDatabase, QWindow, 
+    #QOpenGLWindow
+    )
+from PySide6.QtWebEngineWidgets import (QWebEngineView,  # noqa
+                                      # QWebEnginePage,
                                       # QWebSettings,
                                       )
-from PyQt5.QtWebChannel import QWebChannel  # noqa
-from PyQt5.QtWidgets import (# noqa
-    QAction, QStatusBar, QMainWindow, QDockWidget, QToolBar,
+from PySide6.QtWebChannel import QWebChannel  # noqa
+from PySide6.QtWidgets import (# noqa
+    # QAction
+    QStatusBar, QMainWindow, QDockWidget, QToolBar,
     QWidget, QHBoxLayout, QVBoxLayout, QGridLayout, QScrollArea,
     QPushButton, QLabel, QCheckBox, QPlainTextEdit,
     QLineEdit, QSlider, QSpinBox, QDoubleSpinBox,
     QMessageBox, QApplication, QMenu, QMenuBar,
-    QInputDialog, QOpenGLWidget)
+    QInputDialog, # QOpenGLWidget
+    )
 
 # Enable high DPI support.
 # BUG: uncommenting this create scaling bugs on high DPI screens
@@ -186,15 +192,16 @@ def _block(until_true, timeout=None):
 
 def _wait(ms):
     """Wait for a given number of milliseconds, without blocking the GUI."""
-    from PyQt5 import QtTest
+    from PySide6 import QtTest
     QtTest.QTest.qWait(ms)
 
-
+#TODO
 def _debug_trace():  # pragma: no cover
     """Set a tracepoint in the Python debugger that works with Qt."""
-    from PyQt5.QtCore import pyqtRemoveInputHook
+    '''COMMENTED OUT NEED TO FIND ANALGOUS METHOD LATER'''
+    # from PyQt5.QtCore import pyqtRemoveInputHook
     from pdb import set_trace
-    pyqtRemoveInputHook()
+    # pyqtRemoveInputHook()
     set_trace()
 
 
@@ -338,7 +345,7 @@ def screenshot(widget, path=None, dir=None):
     """
     path = path or screenshot_default_path(widget, dir=dir)
     path = Path(path).resolve()
-    if isinstance(widget, QOpenGLWindow):
+    if isinstance(widget, QWindow):
         # Special call for OpenGL widgets.
         widget.grabFramebuffer().save(str(path))
     else:
@@ -499,9 +506,9 @@ class WebView(QWebEngineView):
 
 class WorkerSignals(QObject):
     """Object holding some signals for the workers."""
-    finished = pyqtSignal()
-    error = pyqtSignal(tuple)
-    result = pyqtSignal(object)
+    finished = Signal()
+    error = Signal(tuple)
+    result = Signal(object)
 
 
 def thread_pool():
@@ -537,7 +544,7 @@ class Worker(QRunnable):
         self.kwargs = kwargs
         self.signals = WorkerSignals()
 
-    @pyqtSlot()
+    @Slot()
     def run(self):  # pragma: no cover
         """Run the task in a background thread. Should not be called directly unless you want
         to bypass the thread pool."""
