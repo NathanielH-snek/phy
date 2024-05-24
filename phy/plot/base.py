@@ -16,7 +16,7 @@ from timeit import default_timer
 import numpy as np
 
 from phylib.utils import connect, emit, Bunch
-from phy.gui.qt import Qt, QEvent, QOpenGLWindow
+from phy.gui.qt import Qt, QEvent, QWindow # QOpenGLWindow 
 from . import gloo
 from .gloo import gl
 from .transform import TransformChain, Clip, pixels_to_ndc, Range
@@ -504,7 +504,7 @@ class LazyProgram(gloo.Program):
                 pass
 
 
-class BaseCanvas(QOpenGLWindow):
+class BaseCanvas(QWindow):
     """Base canvas class. Derive from QOpenGLWindow.
 
     The canvas represents an OpenGL-powered rectangular black window where one can add visuals
