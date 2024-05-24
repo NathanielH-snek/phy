@@ -28,7 +28,7 @@ logger = logging.getLogger(__name__)
 
 # BUG FIX on Ubuntu, otherwise the canvas is all black:
 # https://riverbankcomputing.com/pipermail/pyqt/2014-January/033681.html
-from OpenGL import GL  # noqa
+# from OpenGL import GL  # noqa
 
 from PySide6.QtCore import (Qt, QByteArray, QMetaObject, QObject,  # noqa QVariant,
                           QEventLoop, QTimer, QPoint, QTimer,
