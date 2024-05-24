@@ -13,7 +13,7 @@ import logging
 
 from .qt import (
     QApplication, QWidget, QDockWidget, QHBoxLayout, QVBoxLayout, QPushButton, QLabel, QCheckBox,
-    QMenu, QToolBar, QStatusBar, QMainWindow, QMessageBox, Qt, QPoint, QSize, _load_font,
+    QMenu, QToolBar, QStatusBar, QMainWindow, QMessageBox, Qt, QPoint, QSize, QBoxLayout, _load_font,
     _wait, prompt, show_box, screenshot as make_screenshot)
 from .state import GUIState, _gui_state_path, _get_default_state_path
 from .actions import Actions, Snippets
@@ -310,7 +310,7 @@ class DockWidget(QDockWidget):
 
         self._buttons = QWidget(self._title_bar)
         self._buttons_layout = QHBoxLayout(self._buttons)
-        self._buttons_layout.setDirection(1)
+        self._buttons_layout.setDirection(QBoxLayout.LeftToRight)
         self._buttons_layout.setContentsMargins(0, 0, 0, 0)
         self._buttons_layout.setSpacing(1)
         self._buttons.setLayout(self._buttons_layout)

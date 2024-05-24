@@ -56,7 +56,7 @@ from PySide6.QtWidgets import (# noqa
     QPushButton, QLabel, QCheckBox, QPlainTextEdit,
     QLineEdit, QSlider, QSpinBox, QDoubleSpinBox,
     QMessageBox, QApplication, QMenu, QMenuBar,
-    QInputDialog, # QOpenGLWidget
+    QInputDialog, QBoxLayout # QOpenGLWidget
     )
 
 # Enable high DPI support.
