@@ -6,7 +6,7 @@ dependencies:
   - scipy
   - h5py
   - cython
-  - pyside6
+  - PySide6
   - pip:
     - klusta
     - klustakwik2
