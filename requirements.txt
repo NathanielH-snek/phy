@@ -16,3 +16,4 @@ joblib
 click
 mkdocs
 PyQtWebEngine
+PySide6

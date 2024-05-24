@@ -10,7 +10,7 @@ dependencies:
   - matplotlib
   - scipy
   - h5py
-  - pyside6
+  - PySide6
   - qtconsole
   - requests
   - responses
