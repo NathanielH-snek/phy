@@ -41,7 +41,7 @@ from PySide6.QtCore import (Qt, QByteArray, QMetaObject, QObject,  # noqa QVaria
 from PySide6.QtWebEngineCore import QWebEnginePage
 from PySide6.QtGui import (  # noqa
     QKeySequence, QIcon, QColor, QMouseEvent, QGuiApplication,
-    QFontDatabase, QWindow, 
+    QFontDatabase, QWindow, QAction
     #QOpenGLWindow
     )
 from PySide6.QtWebEngineWidgets import (QWebEngineView,  # noqa
