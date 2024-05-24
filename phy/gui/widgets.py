@@ -17,7 +17,7 @@ from qtconsole.inprocess import QtInProcessKernelManager
 from .qt import (
     WebView, QObject, QWebChannel, QWidget, QGridLayout, QPlainTextEdit,
     QLabel, QLineEdit, QCheckBox, QSpinBox, QDoubleSpinBox,
-    pyqtSlot, _static_abs_path, _block, Debouncer)
+    Slot, _static_abs_path, _block, Debouncer)
 from phylib.utils import emit, connect
 from phy.utils.color import colormaps, _is_bright
 from phylib.utils._misc import _CustomEncoder, read_text, _pretty_floats
@@ -259,7 +259,7 @@ class JSEventEmitter(QObject):
         self._debouncer = Debouncer()
         self._debounce_events = debounce_events
 
-    @pyqtSlot(str, str)
+    @Slot(str, str)
     def emitJS(self, name, arg_json):
         logger.log(5, "Emit from Python %s %s.", name, arg_json)
         args = str(name), self._parent, json.loads(str(arg_json))
