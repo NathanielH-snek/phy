@@ -254,7 +254,7 @@ class DockWidget(QDockWidget):
 
         # Only show the close button if the dock widget is closable.
         print(self.features().DockWidgetClosable)
-        if int(self.features()) % 2 == 1:
+        if self.features().DockWidgetClosable:
             # Close button.
             @self.add_button(name='close', text='✕')
             def on_close(e):  # pragma: no cover
