@@ -44,9 +44,9 @@ with open(filename, 'r') as f:
 
 # Only add PyQt5 dependency if it is not already installed in the conda environment.
 try:
-    import PyQt5
+    import PySide6
 except ImportError:
-    require.append('PyQt5')
+    require.append('PySide6')
 
 
 setup(

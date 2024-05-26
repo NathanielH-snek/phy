@@ -1,4 +1,5 @@
-phylib
+# phylib
+git+https://github.com/NathanielH-snek/phylib.git
 mtscomp
 numpy
 matplotlib
