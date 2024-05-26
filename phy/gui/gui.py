@@ -253,6 +253,7 @@ class DockWidget(QDockWidget):
         """Create the default buttons on the right."""
 
         # Only show the close button if the dock widget is closable.
+        print(self.features().DockWidgetClosable)
         if int(self.features()) % 2 == 1:
             # Close button.
             @self.add_button(name='close', text='✕')
